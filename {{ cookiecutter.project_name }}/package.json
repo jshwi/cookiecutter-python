@@ -1,0 +1,63 @@
+{
+  "name": "{{ cookiecutter.project_name }}",
+  "version": "{{ cookiecutter.project_version }}",
+  "description": "{{ cookiecutter.project_description }}",
+  "private": true,
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "toml:sort": "poetry run pyaud sort-pyproject",
+    "audit": "npm-run-all audit:*",
+    "audit:misc": "npx prettier -c .",
+    "audit:py": "poetry run pyaud audit",
+    "audit:py:verbose": "poetry run pyaud audit --rcfile .github/pyaud.toml",
+    "bump:major": "poetry run bump2version major",
+    "bump:minor": "poetry run bump2version minor",
+    "bump:patch": "poetry run bump2version patch",
+    "clean": "poetry run pyaud clean",
+    "format": "npm-run-all format:*",
+    "format:misc": "prettier -w .",
+    "format:py": "npm-run-all format:py:*",
+    "format:py:code": "poetry run pyaud format",
+    "format:py:docs": "poetry run pyaud format-docs",
+    "format:py:str": "poetry run pyaud format-str",
+    "lint": "poetry run pyaud lint",
+    "test": "poetry run pyaud test",
+    "test:doctest": "poetry run pyaud doctest",
+    "test:doctest:package": "poetry run pyaud doctest-package",
+    "test:doctest:readme": "poetry run pyaud doctest-readme",
+    "test:unit": "poetry run pyaud tests",
+    "types": "poetry run pyaud typecheck",
+    "const": "poetry run pyaud const"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}.git"
+  },
+{%- if cookiecutter.project_keywords == "comma,separated,list" %}
+  "keywords": [],
+{%- else %}
+  "keywords": [
+{%- set keywords = cookiecutter.project_keywords.split(",") %}
+{%- for keyword in keywords %}
+{%- if loop.last %}
+    "{{ keyword }}"
+{%- else %}
+    "{{ keyword }}",
+{%- endif %}
+{%- endfor %}
+  ],
+{%- endif %}
+  "author": "{{ cookiecutter.author }}",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}/issues"
+  },
+  "homepage": "https://{{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_name }}/",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.5.1"
+  }
+}
