@@ -1,0 +1,60 @@
+{
+  "name": "{{ cookiecutter.project_name }}",
+  "version": "{{ cookiecutter.project_version }}",
+  "description": "{{ cookiecutter.project_description }}",
+  "private": true,
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "toml:sort": "poetry run toml-sort pyproject.toml --in-place --all",
+    "audit": "npm-run-all audit:* && npm run toml:sort && npm run test:doctest:readme",
+    "audit:misc": "npx prettier -c .",
+    "audit:py": "poetry run pyaud audit --deploy --rcfile .github/pyaud.toml",
+    "bump:major": "poetry run bump2version major",
+    "bump:minor": "poetry run bump2version minor",
+    "bump:patch": "poetry run bump2version patch",
+    "clean": "poetry run pyaud clean",
+    "format": "npm-run-all format:*",
+    "format:misc": "prettier -w .",
+    "format:py": "npm-run-all format:py:*",
+    "format:py:code": "poetry run pyaud format",
+    "format:py:docs": "poetry run pyaud format-docs",
+    "format:py:str": "poetry run pyaud format-str",
+    "lint": "poetry run pyaud lint",
+    "test": "npm-run-all test:**",
+    "test:doctest:package": "poetry run sphinx-build -M doctest docs/ docs/_build",
+    "test:doctest:readme": "poetry run python -m doctest README.rst",
+    "test:unit": "poetry run pyaud tests",
+    "types": "poetry run pyaud typecheck"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}.git"
+  },
+{%- if cookiecutter.project_keywords == "comma,separated,list" %}
+  "keywords": [],
+{%- else %}
+  "keywords": [
+{%- set keywords = cookiecutter.project_keywords.split(",") %}
+{%- for keyword in keywords %}
+{%- if loop.last %}
+    "{{ keyword }}"
+{%- else %}
+    "{{ keyword }}",
+{%- endif %}
+{%- endfor %}
+  ],
+{%- endif %}
+  "author": "{{ cookiecutter.author }}",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}/issues"
+  },
+  "homepage": "https://{{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_name }}/",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.5.1"
+  }
+}
