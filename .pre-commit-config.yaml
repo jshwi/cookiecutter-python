@@ -1,0 +1,155 @@
+default_stages:
+  - commit
+exclude: |
+  (?x)^(
+    poetry.lock|
+    package-lock.json|
+    migrations|
+    .bumpversion.cfg|
+    {{ cookiecutter.project_name }}
+  )$
+repos:
+  - repo: local
+    hooks:
+      - id: toc
+        name: make toc
+        language: system
+        entry: poetry run pyaud toc
+        pass_filenames: false
+      - id: whitelist
+        name: make whitelist
+        language: system
+        entry: poetry run pyaud whitelist
+        pass_filenames: false
+      - id: mypy
+        name: check types
+        language: system
+        entry: poetry run pyaud typecheck
+        pass_filenames: false
+      - id: black
+        name: fix source format
+        entry: poetry run pyaud format
+        language: system
+        pass_filenames: false
+      - id: doctest-package
+        name: test documentation
+        language: system
+        entry: poetry run pyaud doctest-package
+        pass_filenames: false
+      - id: doctest-readme
+        name: test readme
+        language: system
+        entry: poetry run pyaud doctest-readme
+        pass_filenames: false
+      - id: tests
+        name: test source
+        language: system
+        entry: poetry run pyaud test
+        pass_filenames: false
+      - id: isort
+        name: isort
+        entry: poetry run pyaud imports
+        language: system
+        pass_filenames: false
+      - id: pylint
+        name: lint source
+        entry: poetry run pylint
+        language: system
+        types:
+          - python
+        exclude: whitelist.py|docs.conf
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: "v4.4.0"
+    hooks:
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-builtin-literals
+      - id: check-case-conflict
+      - id: check-docstring-first
+      - id: check-executables-have-shebangs
+      - id: check-shebang-scripts-are-executable
+      - id: pretty-format-json
+        args:
+          - "--autofix"
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-vcs-permalinks
+      - id: check-xml
+      - id: debug-statements
+      - id: destroyed-symlinks
+      - id: detect-private-key
+        exclude: ^(.*/test.key)
+      - id: end-of-file-fixer
+      - id: file-contents-sorter
+      - id: fix-byte-order-marker
+      - id: forbid-new-submodules
+      - id: forbid-submodules
+      - id: mixed-line-ending
+      - id: no-commit-to-branch
+      - id: requirements-txt-fixer
+      - id: sort-simple-yaml
+      - id: trailing-whitespace
+  - repo: https://github.com/ikamensh/flynt
+    rev: "0.77"
+    hooks:
+      - id: flynt
+        args:
+          - "--line-length"
+          - "79"
+          - "--transform-concats"
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: "v2.7.1"
+    hooks:
+      - id: prettier
+        name: fix yaml
+        types:
+          - yaml
+  - repo: https://github.com/PyCQA/docformatter
+    rev: "v1.5.1"
+    hooks:
+      - id: docformatter
+        args:
+          - "--recursive"
+          - "--wrap-summaries"
+          - "72"
+  - repo: https://github.com/pappasam/toml-sort
+    rev: "v0.20.1"
+    hooks:
+      - id: toml-sort
+        args:
+          - "--in-place"
+          - "--all"
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: "v1.9.0"
+    hooks:
+      - id: rst-directive-colons
+      - id: rst-inline-touching-normal
+  - repo: https://github.com/codespell-project/codespell
+    rev: "v2.2.2"
+    hooks:
+      - id: codespell
+        exclude: ^(.*/messages.po)
+  - repo: https://github.com/jshwi/constcheck
+    rev: "v0.7.0"
+    hooks:
+      - id: constcheck
+  - repo: https://github.com/jshwi/docsig
+    rev: "v0.33.1"
+    hooks:
+      - id: docsig
+  - repo: https://github.com/pre-commit/pre-commit
+    rev: "v2.20.0"
+    hooks:
+      - id: validate_manifest
+  - repo: https://github.com/jendrikseipp/vulture
+    rev: "v2.6"
+    hooks:
+      - id: vulture
+        pass_filenames: true
+        exclude: docs/conf.py
+  - repo: https://github.com/siderolabs/conform
+    rev: "v0.1.0-alpha.27"
+    hooks:
+      - id: conform
+        name: check commit

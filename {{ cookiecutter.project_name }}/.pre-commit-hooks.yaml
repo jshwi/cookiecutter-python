@@ -1,0 +1,7 @@
+- id: {{ cookiecutter.project_name }}
+  name: {{ cookiecutter.project_name }}
+  entry: {{ cookiecutter.project_name }}
+  description: {{ cookiecutter.project_description.lower() }}
+  language: python
+  types:
+    - python
