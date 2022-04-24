@@ -1,7 +1,7 @@
 [build-system]
 build-backend = "poetry.core.masonry.api"
 requires = [
-    "poetry-core>=1.0.0"
+    "poetry-core>=1.0.0",
 ]
 
 [tool.black]
@@ -23,12 +23,12 @@ fail_under = 100
 [tool.coverage.run]
 omit = [
     "whitelist.py",
-    "{{ cookiecutter.project_slug }}/__main__.py"
+    "{{ cookiecutter.project_slug }}/__main__.py",
 ]
 
 [tool.poetry]
 authors = [
-    "{{ cookiecutter.github_username }} <{{ cookiecutter.email }}>"
+    "{{ cookiecutter.github_username }} <{{ cookiecutter.email }}>",
 ]
 description = "{{ cookiecutter.project_description }}"
 {%- if cookiecutter.project_keywords == "comma,separated,list" %}
@@ -115,7 +115,7 @@ when = "d"
 
 [tool.pyaud.logging.root]
 handlers = [
-    "default"
+    "default",
 ]
 level = "DEBUG"
 propagate = false
@@ -136,3 +136,4 @@ norecursedirs = [
     ".mypy_cache",
     ".idea",
 ]
+
