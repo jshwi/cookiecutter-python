@@ -47,7 +47,7 @@ python = "^3.8"
 
 [tool.poetry.dev-dependencies]
 bump2version = "^1.0.1"
-ipython = "^8.2.0"
+ipython = "^8.3.0"
 jinja-cli = "^1.2.2"
 prompt-toolkit = "^3.0.29"
 pyaud = "^3.13.3"
