@@ -74,7 +74,9 @@ python = "^3.8"
 {% endif %}
 [tool.pyaud.audit]
 modules = [
-    "files",
+    "toc",
+    "whitelist",
+    "sort-pyproject",
     "format",
     "format-docs",
     "format-str",
@@ -82,7 +84,8 @@ modules = [
     "typecheck",
     "unused",
     "lint",
-    "coverage",
+    "const",
+    "test",
     "docs",
 ]
 
