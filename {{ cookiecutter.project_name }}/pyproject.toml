@@ -23,7 +23,9 @@ fail_under = 100
 [tool.coverage.run]
 omit = [
     "whitelist.py",
+{%- if cookiecutter.include_entry_point == "y" %}
     "{{ cookiecutter.project_slug }}/__main__.py",
+{%- endif %}
 ]
 
 [tool.poetry]
@@ -139,4 +141,3 @@ norecursedirs = [
     ".mypy_cache",
     ".idea",
 ]
-
