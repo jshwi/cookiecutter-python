@@ -63,7 +63,6 @@ python = "^3.8"
         "pytest-sugar": "^0.9.4",
         "restview": "^3.0.0",
         "sphinx-toolbox": "^2.18.1",
-        "toml-sort": "^0.20.0"
     }.items()
 ) -%}
 {%- if key != cookiecutter.project_name %}
