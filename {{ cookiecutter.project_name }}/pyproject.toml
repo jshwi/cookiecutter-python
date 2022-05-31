@@ -33,6 +33,8 @@ authors = [
     "{{ cookiecutter.github_username }} <{{ cookiecutter.email }}>",
 ]
 description = "{{ cookiecutter.project_description }}"
+documentation = "https://{{ cookiecutter.project_name }}.readthedocs.io/en/latest/?badge=latest"
+homepage = "https://pypi.org/project/{{ cookiecutter.project_name }}/"
 {%- if cookiecutter.project_keywords == "comma,separated,list" %}
 keywords = []
 {%- else %}
@@ -44,8 +46,12 @@ keywords = [
 ]
 {%- endif %}
 license = "MIT"
+maintainers = [
+    "{{ cookiecutter.github_username }} <{{ cookiecutter.email }}>",
+]
 name = "{{ cookiecutter.project_name }}"
 readme = "README.rst"
+repository = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}"
 version = "{{ cookiecutter.project_version }}"
 
 [tool.poetry.dependencies]
