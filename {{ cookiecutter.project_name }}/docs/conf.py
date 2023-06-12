@@ -121,7 +121,7 @@ html_theme_options = {
             #     "icon": "material/lightbulb",
             #     "name": "Switch to light mode",
             # },
-        },
+        }
     ],
     "version_dropdown": True,
     # "version_info": [
