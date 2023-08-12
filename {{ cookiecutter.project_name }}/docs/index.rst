@@ -7,6 +7,5 @@
    :name: mastertoc
 
    {{ cookiecutter.project_slug }}
-   readme
 
 This documentation was last updated on |today|
