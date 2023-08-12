@@ -29,7 +29,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the
-[ Code of Conduct](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}/blob/master/CODE_OF_CONDUCT.md).
+[{{ cookiecutter.project_name }} Code of Conduct](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}/blob/master/CODE_OF_CONDUCT.md).
 By participating, you are expected to uphold this code. Please report unacceptable behaviour
 to <{{ cookiecutter.email }}>.
 
