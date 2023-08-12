@@ -31,7 +31,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 This project and everyone participating in it is governed by the
 [ Code of Conduct](https://github.com/jshwi/{{ cookiecutter.project_name }}/blob/master/CODE_OF_CONDUCT.md).
 By participating, you are expected to uphold this code. Please report unacceptable behaviour
-to <stephen@jshwisolutions.com>.
+to <{{ cookiecutter.email }}>.
 
 ## I Have a Question
 
@@ -85,7 +85,7 @@ A good bug report shouldn't leave others needing to chase you up for more inform
 
 ### How Do I Submit a Good Bug Report?
 
-> You must never report security related issues, vulnerabilities or bugs including sensitive information to the issue tracker, or elsewhere in public. Instead sensitive bugs must be sent by email to <stephen@jshwisolutions.com>.
+> You must never report security related issues, vulnerabilities or bugs including sensitive information to the issue tracker, or elsewhere in public. Instead sensitive bugs must be sent by email to <{{ cookiecutter.email }}>.
 
 <!-- You may add a PGP key to allow the messages to be sent encrypted as well. -->
 
