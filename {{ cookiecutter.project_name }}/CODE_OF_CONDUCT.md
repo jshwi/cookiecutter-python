@@ -1,4 +1,4 @@
-# Code of Conduct - docsig
+# Code of Conduct - {{ cookiecutter.project_name }}
 
 ## Our Pledge
 
